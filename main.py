@@ -1,25 +1,35 @@
-import tkinter as tk
+from tkinter import *
+#Arayüz Uİ oluşturma
 
-# Fonksiyonlar
-def gizli_not_yarat():
-    # Bu fonksiyon, Gizli Not yarat butonuna tıklandığında çağrılacak işlemleri gerçekleştirir.
-    pass  # Fonksiyonun işlevini buraya ekleyin
+FONT=("Verdana",20,"normal")
+window =Tk()
+window.title("Gizli Not")
+window.config(padx=30,pady=30)
 
-def gizli_not_oku():
-    # Bu fonksiyon, Gizli Not oku butonuna tıklandığında çağrılacak işlemleri gerçekleştirir.
-    pass  # Fonksiyonun işlevini buraya ekleyin
+#konu başlığı ekleme
+title_info_label=Label(text="Başlığı Giriniz",font=FONT)
+title_info_label.pack()
 
-# Ana uygulama penceresini oluşturma
-root = tk.Tk()
-root.title("Gizli Not")
-root.geometry("500x500")
+title_entry=Entry(width=30)
+title_entry.pack()
 
-# Butonlar
-gizli_not_yarat_button = tk.Button(root, text="Gizli Not Yarat", command=gizli_not_yarat)
-gizli_not_yarat_button.pack(pady=20)
+input_info_label=Label(text="Gizli Mesajı Giriniz",font=FONT)
+input_info_label.pack()
 
-gizli_not_oku_button = tk.Button(root, text="Gizli Not Oku", command=gizli_not_oku)
-gizli_not_oku_button.pack(pady=20)
+input_text= Text(width=50,height=25)
+input_text.pack()
 
-# Uygulamayı başlatma
-root.mainloop()
+master_secret_label=Label(text="Şifreyi Giriniz",font=FONT)
+master_secret_label.pack()
+
+master_secret_input=Entry(width=30)
+master_secret_input.pack()
+
+save_button=Button(text="Kaydet ve Şifrele")
+save_button.pack()
+
+decrypt_button=Button(text="Çöz")
+decrypt_button.pack()
+
+
+window.mainloop()
