@@ -52,11 +52,11 @@ class SecretNoteApp:
         secret = self.secret_entry.get("1.0", tk.END).strip()  # 10 satırlık metni al
 
         # Metni şifrele
-        encrypted_note = self.cipher_suite.encrypt(secret.encode())
+        encrypted_secret = self.cipher_suite.encrypt(secret.encode())
 
-        # Dosyaya kaydet
+        # Başlık ve şifreyi dosyaya kaydet
         with open(f"{title}.txt", "wb") as file:
-            file.write(encrypted_note)
+            file.write(encrypted_secret)
 
         print("Note saved and encrypted successfully.")
 
@@ -65,11 +65,13 @@ class SecretNoteApp:
         master_key = self.master_key_entry.get()
 
         try:
-            # Dosyayı oku ve şifreyi çöz
+            # Dosyayı oku
             with open(f"{title}.txt", "rb") as file:
-                encrypted_note = file.read()
-                decrypted_note = self.cipher_suite.decrypt(encrypted_note)
-                print("Decrypted Note:", decrypted_note.decode())
+                encrypted_secret = file.read()
+
+            # Şifreyi çöz
+            decrypted_secret = self.cipher_suite.decrypt(encrypted_secret)
+            print("Decrypted Secret:", decrypted_secret.decode())
         except FileNotFoundError:
             print("Note not found.")
 
