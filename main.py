@@ -6,6 +6,10 @@ window =Tk()
 window.title("Gizli Not")
 window.config(padx=30,pady=30)
 
+photo=PhotoImage(file="gizli.png")
+photo_label=Label(image=photo)
+photo_label.pack()
+
 #konu başlığı ekleme
 title_info_label=Label(text="Başlığı Giriniz",font=FONT)
 title_info_label.pack()
