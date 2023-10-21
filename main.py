@@ -39,6 +39,21 @@ def save_and_encrypt_notes():
             master_secret_input.delete(0, END)
             input_text.delete("1.0", END)
 
+def decrypt_notes():
+    message_encrypted=input_text.get(1.0,END)
+    master_secret=master_secret_input.get()
+
+    if len(message_encrypted)==0 or len(master_secret)==0:
+        messagebox.showinfo(title="Hata",message="Lütfen tüm bilgileri doğru giriniz")
+
+    else:
+        try:
+            decrypted_message=decode(master_secret,message_encrypted)
+            input_text.delete("1.0",END)
+            input_text.insert("1.0",decrypted_message)
+        except:
+            messagebox.showinfo(title="Hata",message="Lütfen kriptolu kodu yazınız")
+
 # Arayüz UI oluşturma
 
 FONT = ("Verdana", 20, "normal")
@@ -72,7 +87,7 @@ master_secret_input.pack()
 save_button = Button(text="Kaydet ve Şifrele", command=save_and_encrypt_notes)
 save_button.pack()
 
-decrypt_button = Button(text="Çöz")
+decrypt_button = Button(text="Çöz",command=decrypt_notes)
 decrypt_button.pack()
 
 window.mainloop()
