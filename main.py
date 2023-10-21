@@ -1,4 +1,21 @@
 from tkinter import *
+from tkinter import messagebox
+
+def save_and_encrypy_notes():
+    title=title_entry.get()
+    message=input_text.get("1.0",END)
+    master_secret=master_secret_input.get()
+
+    if len(title)==0 or len(message)==0 or len(master_secret)==0:
+        messagebox.showinfo(title="Hata",message="Bütün Bilgileri Giriniz")
+
+
+
+
+
+
+
+
 #Arayüz Uİ oluşturma
 
 FONT=("Verdana",20,"normal")
@@ -29,7 +46,7 @@ master_secret_label.pack()
 master_secret_input=Entry(width=30)
 master_secret_input.pack()
 
-save_button=Button(text="Kaydet ve Şifrele")
+save_button=Button(text="Kaydet ve Şifrele",command=save_and_encrypy_notes)
 save_button.pack()
 
 decrypt_button=Button(text="Çöz")
